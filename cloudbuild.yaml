@@ -1,10 +1,10 @@
 steps:
   # Build your container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/Shopping-list/snapshot-img', '.']
+    args: ['build', '-t', 'gcr.io/shopping-list/snapshot-img', '.']
   # Push the container image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/Shopping-list/snapshot-img']
+    args: ['push', 'gcr.io/shopping-list/snapshot-img']
   # Deploy the container image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
@@ -12,7 +12,7 @@ steps:
       - 'deploy'
       - 'saleslist'
       - '--image'
-      - 'gcr.io/Shopping-list/snapshot-img'
+      - 'gcr.io/shopping-list/snapshot-img'
       - '--platform'
       - 'managed'
       # Add other deployment options if needed, e.g., --region, --allow-unauthenticated, etc.
