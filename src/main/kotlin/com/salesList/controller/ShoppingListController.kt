@@ -10,7 +10,8 @@ class ShoppingListController {
     // Sample in-memory list to store shopping list items for demonstration purposes
     private val shoppingList = mutableListOf(
             ShoppingItem(1, "Milk", 1, "liter"),
-            ShoppingItem(2, "Eggs", 12, "pieces", true)
+            ShoppingItem(2, "Eggs", 12, "pieces", true),
+            ShoppingItem(3, "test", 12, "pieces", true)
     )
 
     @GetMapping("/{id}")
