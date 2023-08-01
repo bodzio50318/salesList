@@ -4,7 +4,7 @@ steps:
     args: ['build', '-t', 'gcr.io/shopping-list/:$COMMIT_SHA', '.']
   # Push the container image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/your-project-id/your-container-image']
+    args: ['push', 'gcr.io/shopping-list/:$COMMIT_SHA']
   # Deploy the container image to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
