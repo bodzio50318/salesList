@@ -1,5 +1,5 @@
 # Use the official OpenJDK base image with Java 17
-FROM adoptopenjdk:17-jre-hotspot
+FROM openjdk:17-jre-slim
 
 # Set the working directory inside the container
 WORKDIR /app
