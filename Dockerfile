@@ -5,7 +5,7 @@ FROM openjdk:17
 WORKDIR /app
 
 # Copy the Java 17 Spring Boot application JAR file to the container
-COPY salesList-0.0.1-SNAPSHOT.jar app.jar
+COPY build/libs/salesList-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the port on which your Spring Boot application listens (change the port if needed)
 EXPOSE 8080
