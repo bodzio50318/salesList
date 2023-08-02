@@ -24,3 +24,6 @@ steps:
       - 'gcr.io/shopping-list-394517/saleslist:latest'
       - '--platform'
       - 'managed'
+      - '--region'
+      - 'europe-central2'
+      - '--allow-unauthenticated'
