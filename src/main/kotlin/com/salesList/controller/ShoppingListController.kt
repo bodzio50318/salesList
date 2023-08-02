@@ -1,17 +1,18 @@
 package com.salesList.controller
 
 import com.salesList.model.ShoppingItem
+import com.salesList.service.ShoppingListService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/shopping-list")
-class ShoppingListController {
+class ShoppingListController(private val shoppingListService: ShoppingListService) {
 
     // Sample in-memory list to store shopping list items for demonstration purposes
     private val shoppingList = mutableListOf(
-            ShoppingItem(1, "Milk", 1, "liter"),
-            ShoppingItem(2, "Eggs", 12, "pieces", true),
-            ShoppingItem(3, "test", 12, "pieces", true)
+        ShoppingItem(1, "Milk", 1, "liter"),
+        ShoppingItem(2, "Eggs", 12, "pieces", true),
+        ShoppingItem(3, "test", 12, "pieces", true),
     )
 
     @GetMapping("/{id}")
@@ -26,10 +27,7 @@ class ShoppingListController {
 
     @PostMapping
     fun addShoppingListItem(@RequestBody newItem: ShoppingItem): ShoppingItem {
-        val newId = shoppingList.maxOfOrNull { it.id }?.plus(1) ?: 1
-        val itemToAdd = newItem.copy(id = newId)
-        shoppingList.add(itemToAdd)
-        return itemToAdd
+        return shoppingListService.addShoppingListItem(newItem)
     }
 
     @PutMapping("/{id}")
