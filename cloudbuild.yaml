@@ -8,7 +8,7 @@ steps:
 
   # Step 2: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/shopping-list-394517/saleslist:latest', '.']
+    args: ['build','--pull', '-t', 'gcr.io/shopping-list-394517/saleslist:latest', '.']
 
   # Step 3: Push the Docker image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
