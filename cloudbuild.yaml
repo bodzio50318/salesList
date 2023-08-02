@@ -1,18 +1,26 @@
 steps:
-  # Build your container image
+  # Step 1: Build the Java 17 Spring Boot application using Gradle
+  - name: 'gradle:7.2-jdk17'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - './gradlew clean build'
+
+  # Step 2: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/shopping-list/snapshot-img', '.']
-  # Push the container image to Google Container Registry
+    args: ['build', '-t', 'gcr.io/shopping-list-394517/saleslist:latest', '.']
+
+  # Step 3: Push the Docker image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/shopping-list/snapshot-img']
-  # Deploy the container image to Cloud Run
+    args: ['push', 'gcr.io/shopping-list-394517/saleslist:latest']
+
+  # Step 4: Deploy the Docker image to Google Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'
       - 'deploy'
       - 'saleslist'
       - '--image'
-      - 'gcr.io/shopping-list/snapshot-img'
+      - 'gcr.io/shopping-list-394517/saleslist:latest'
       - '--platform'
       - 'managed'
-      # Add other deployment options if needed, e.g., --region, --allow-unauthenticated, etc.
