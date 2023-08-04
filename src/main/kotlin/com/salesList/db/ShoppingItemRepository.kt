@@ -1,8 +1,8 @@
 package com.salesList.db
 
-import com.salesList.model.ShoppingItem
-import org.springframework.data.mongodb.repository.MongoRepository
+import com.salesList.db.model.ShoppingItemDto
+import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface ShoppingItemRepository : MongoRepository<ShoppingItem, String>
+interface ShoppingItemRepository : JpaRepository<ShoppingItemDto, Long>

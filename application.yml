@@ -1,4 +1,0 @@
-spring:
-  data:
-    mongodb:
-      uri: mongodb+srv://mbodziak:8YuOtgRDKmqi1VL2@shopping-list-db.smkasbh.mongodb.net/shopping-list-db?retryWrites=true&w=majority?ssl=true
