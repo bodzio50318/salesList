@@ -1,6 +1,6 @@
 package com.salesList.controller
 
-import com.salesList.db.model.ShoppingItemDto
+import com.salesList.db.model.ShoppingItem
 import com.salesList.service.ShoppingItemService
 import org.springframework.web.bind.annotation.*
 
@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/item")
 class ShoppingItemController(private val shoppingItemService: ShoppingItemService) {
     @GetMapping
-    fun getAllShoppingListItems(): List<ShoppingItemDto> {
+    fun getAllShoppingListItems(): List<ShoppingItem> {
         return shoppingItemService.getAllShoppingListItems()
     }
 
     @GetMapping("/{id}")
-    fun getShoppingListItem(@PathVariable id: Long): ShoppingItemDto? {
+    fun getShoppingListItem(@PathVariable id: Long): ShoppingItem? {
         return shoppingItemService.getShoppingListItem(id)
     }
 
     @PostMapping
-    fun getShoppingListItem(@RequestBody item: ShoppingItemDto): ShoppingItemDto {
+    fun getShoppingListItem(@RequestBody item: ShoppingItem): ShoppingItem {
         return shoppingItemService.addShoppingListItem(item)
     }
 }
